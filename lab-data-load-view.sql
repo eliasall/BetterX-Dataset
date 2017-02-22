@@ -1,0 +1,162 @@
+## Create tables
+#################
+CREATE TABLE `lab_web_entries` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pageid` bigint(20) NOT NULL,
+  `entryStartTime` bigint(20) DEFAULT NULL,
+  `time` int(11) DEFAULT NULL,
+  `serverIPAddress` char(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `connection` char(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blocked` int(11) DEFAULT NULL,
+  `dns` int(11) DEFAULT NULL,
+  `connect` int(11) DEFAULT NULL,
+  `send` int(11) DEFAULT NULL,
+  `wait` int(11) DEFAULT NULL,
+  `receive` int(11) DEFAULT NULL,
+  `ssl` int(11) DEFAULT NULL,
+  `beforeRequestCacheEntries` int(11) DEFAULT NULL,
+  `afterRequestCacheEntries` int(11) DEFAULT NULL,
+  `hitCount` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index2` (`id`),
+  KEY `index3` (`pageid`),
+  KEY `index4` (`entryStartTime`),
+  KEY `index5` (`time`),
+  KEY `index6` (`serverIPAddress`),
+  KEY `index7` (`connection`),
+  KEY `index8` (`blocked`),
+  KEY `index9` (`dns`),
+  KEY `index10` (`connect`),
+  KEY `index11` (`send`),
+  KEY `index12` (`wait`),
+  KEY `index13` (`receive`),
+  KEY `index14` (`ssl`),
+  KEY `index15` (`beforeRequestCacheEntries`),
+  KEY `index16` (`afterRequestCacheEntries`),
+  KEY `index17` (`hitCount`)
+) ENGINE=InnoDB AUTO_INCREMENT=81220 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `lab_web_entries_request` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `web_entries_id` bigint(20) NOT NULL,
+  `method` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url` varchar(2083) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `httpVersion` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cookieNumber` int(11) DEFAULT NULL,
+  `header_Host` varchar(2083) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_UserAgent` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_Accept` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_AcceptEncoding` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_Connection` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_ContentLength` bigint(20) DEFAULT NULL,
+  `header_KeepAlive` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `headerSize` int(11) DEFAULT NULL,
+  `bodySize` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index2` (`id`),
+  KEY `index3` (`method`),
+  KEY `index4` (`url`(255)),
+  KEY `index5` (`httpVersion`),
+  KEY `index6` (`cookieNumber`),
+  KEY `index7` (`header_Host`(255)),
+  KEY `index8` (`header_UserAgent`),
+  KEY `index9` (`header_Accept`),
+  KEY `index10` (`header_AcceptEncoding`),
+  KEY `index11` (`header_Connection`),
+  KEY `index12` (`headerSize`),
+  KEY `index13` (`bodySize`)
+) ENGINE=InnoDB AUTO_INCREMENT=73566 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `lab_web_entries_response` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `web_entries_id` bigint(20) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `statusText` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `httpVersion` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cookieNumber` char(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_Date` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_Server` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_XPoweredBy` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_ContentEncoding` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_ContentLength` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_KeepAlive` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_Connection` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `header_ContentType` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `redirectUrl` varchar(2083) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `headersSize` int(11) DEFAULT NULL,
+  `bodySize` int(11) DEFAULT NULL,
+  `content_size` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content_compression` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content_mimeType` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content_encoding` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index2` (`id`),
+  KEY `index3` (`status`),
+  KEY `index4` (`statusText`),
+  KEY `index5` (`httpVersion`),
+  KEY `index6` (`cookieNumber`),
+  KEY `index7` (`header_Date`),
+  KEY `index8` (`header_Server`),
+  KEY `index9` (`header_XPoweredBy`),
+  KEY `index10` (`header_ContentEncoding`),
+  KEY `index11` (`header_ContentLength`),
+  KEY `index12` (`header_KeepAlive`),
+  KEY `index13` (`header_Connection`),
+  KEY `index14` (`header_ContentType`),
+  KEY `index15` (`redirectUrl`(255)),
+  KEY `index16` (`headersSize`),
+  KEY `index17` (`bodySize`)
+) ENGINE=InnoDB AUTO_INCREMENT=67617 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `lab_web_pages` (
+  `tbl_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `uid` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tabid` bigint(20) DEFAULT NULL,
+  `pageStartTime` bigint(20) DEFAULT NULL,
+  `id` bigint(20) DEFAULT NULL,
+  `pageTitle` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pageOnContentLoad` int(11) DEFAULT NULL,
+  `pageOnLoad` int(11) DEFAULT NULL,
+  `origin` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`tbl_id`),
+  KEY `index3` (`pageStartTime`),
+  KEY `index5` (`id`),
+  KEY `index6` (`pageTitle`(255)),
+  KEY `index7` (`pageOnContentLoad`),
+  KEY `index8` (`pageOnLoad`),
+  KEY `index9` (`origin`),
+  KEY `index10` (`tbl_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2921 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* Data Loaded - Build Reports */
+
+###########################
+## Lab Web Sessions Table
+###########################
+drop table if exists _lab_webSessions;
+create table _lab_webSessions as
+SELECT 
+    `a`.`uid`,
+    `a`.`tabid`,
+    `a`.tbl_id,
+    `a`.`pageStartTime`,
+    CONVERT_TZ(from_unixtime( cast(cast(pageStartTime as char(10)) as unsigned) ), 'UTC', 'EET') as `labTime`,
+    `a`.`pageTitle`,
+    `a`.`pageOnContentLoad`,
+    `a`.`pageOnLoad`,
+    `b`.`time`,
+    `b`.`blocked`,
+    `b`.`dns`,
+    `b`.`connect`,
+    `b`.`send`,
+    `b`.`wait`,
+    `b`.`receive`,
+    `c`.`url`,
+    `c`.`headerSize` as headerSizeRequest,
+    `c`.`bodySize`as bodySizeRequest,
+    `d`.`headersSize` as headerSizeResponse,
+    `d`.`bodySize`as bodySizeResponse
+FROM lab_web_pages as a
+inner join lab_web_entries as b on a.id = b.pageid and a.pageStartTime = b.entryStartTime
+inner join lab_web_entries_request as c on b.id = c.web_entries_id
+inner join lab_web_entries_response as d on b.id = d.web_entries_id
+order by uid asc, `labTime` asc;
+
+SELECT * FROM betterX._lab_webSessions limit 9999999;
