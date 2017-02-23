@@ -1,5 +1,5 @@
 # BetterX-Dataset
-The BetterX Dataset consists of live data collected from anonymous mobile devices users and is the product of the first data collection effort of the BetterX project.
+The BetterX Dataset consists of live data collected from anonymous mobile devices users and is the product of the first data collection effort of the [BetterX](https://github.com/eliasall/BetterX.org) research project.
 
 ### [Data](https://github.com/eliasall/BetterX-Dataset/tree/master/data)
 
